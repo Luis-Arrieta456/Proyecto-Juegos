@@ -1,6 +1,0 @@
-math (Nativa)
-json (Nativa)
-pyttsx3 (Externa)
-pygame (Externa)
-sys (Nativa)
-os (Nativa)
