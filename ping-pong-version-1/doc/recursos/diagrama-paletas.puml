@@ -1,0 +1,26 @@
+@startuml img-diagrama-paletas
+title Diagrama de Flujo: Movimiento de Paletas
+
+start
+:Leer entrada de teclado;
+
+if (¿Tecla W / Flecha Arriba presionada?) then (Sí)
+  if (¿Paleta en límite superior?) then (No)
+    :Mover paleta hacia arriba;
+  else (Sí)
+    :Mantener posición;
+  endif
+else (No)
+  if (¿Tecla S / Flecha Abajo presionada?) then (Sí)
+    if (¿Paleta en límite inferior?) then (No)
+      :Mover paleta hacia abajo;
+    else (Sí)
+      :Mantener posición;
+    endif
+  else (No)
+    :Mantener posición;
+  endif
+endif
+
+stop
+@enduml

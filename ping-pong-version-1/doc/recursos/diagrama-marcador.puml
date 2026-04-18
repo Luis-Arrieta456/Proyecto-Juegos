@@ -1,0 +1,19 @@
+@startuml img-diagrama-marcador
+start
+:Recibe evento de Anotación (jugador);
+if (¿Jugador 1 anotó?) then (Sí)
+  :Puntos P1 + 1;
+  if (¿Puntos P1 >= 7?) then (Sí)
+    :Sets P1 + 1;
+    :Reiniciar Puntos (0-0);
+  endif
+else (No, P2)
+  :Puntos P2 + 1;
+  if (¿Puntos P2 >= 7?) then (Sí)
+    :Sets P2 + 1;
+    :Reiniciar Puntos (0-0);
+  endif
+endif
+:Actualizar texto del Marcador;
+stop
+@enduml

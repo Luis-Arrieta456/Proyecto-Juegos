@@ -1,0 +1,27 @@
+@startuml
+title Flujo de Movimiento de la Pelota
+
+start
+:Actualizar posición (x + vx, y + vy);
+
+if (¿Toca borde superior o inferior?) then (sí)
+    :Invertir velocidad Y (vy * -1);
+    :Reproducir sonido golpe;
+else (no)
+endif
+
+if (¿Colisiona con Paleta?) then (sí)
+    :Invertir velocidad X (vx * -1);
+    :Aumentar velocidad 10%;
+    :Reproducir sonido golpe;
+else (no)
+    if (¿Sale por lateral izquierdo/derecho?) then (sí)
+        :Sumar punto al rival;
+        :Reproducir sonido punto;
+        :Reiniciar al centro;
+    else (no)
+    endif
+endif
+
+stop
+@enduml

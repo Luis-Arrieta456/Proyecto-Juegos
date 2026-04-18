@@ -1,0 +1,16 @@
+@startuml img-diagrama-menu
+start
+:Mostrar Interfaz de Menú;
+if (¿Se pulsa ENTER?) then (Si)
+  :Cambiar estado a SELECCION;
+  stop
+else (No)
+  if (¿Se pulsa Q?) then (Si)
+    :Ejecutar sys.exit();
+    stop
+  else (No)
+    :Mantener en Bucle de Menú;
+    stop
+  endif
+endif
+@enduml

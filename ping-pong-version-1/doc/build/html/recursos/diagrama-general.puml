@@ -1,0 +1,48 @@
+@startuml img-diagrama-general
+title Diagrama de Flujo: Ciclo de Juego (Ping Pong)
+
+start
+:Inicializar Pygame;
+:Estado = MENU_PRINCIPAL;
+
+repeat
+  if (Estado == MENU_PRINCIPAL) then (Sí)
+    :Mostrar Título y Opción "Jugar";
+    if (¿Usuario presiona Jugar?) then (Sí)
+      :Estado = SELECCION_CAMPO;
+    endif
+    
+  else if (Estado == SELECCION_CAMPO) then (Sí)
+    :Mostrar opciones: 1.Clásico, 2.Neón, 3.Desierto;
+    if (¿Usuario elige opción?) then (Sí)
+      :Configurar colores de Clase Cancha;
+      :Estado = JUGANDO;
+    endif
+
+  else if (Estado == PAUSA) then (Sí)
+    :Mostrar Opciones de Pausa;
+    if (¿Reanudar?) then (Sí)
+      :Estado = JUGANDO;
+    else if (¿Reiniciar?) then (Sí)
+      :Resetear puntos;
+      :Estado = JUGANDO;
+    else if (¿Menú?) then (Sí)
+      :Estado = MENU_PRINCIPAL;
+    endif
+
+  else (JUGANDO)
+    :Mover Pelota y Paletas;
+    :Dibujar según estilo de Cancha;
+    if (¿Presiona ESC?) then (Sí)
+      :Estado = PAUSA;
+    endif
+    if (¿Hay Ganador de 2 Sets?) then (Sí)
+      :Estado = MENU_PRINCIPAL;
+    endif
+  endif
+  
+  :Actualizar Pantalla (Flip);
+repeat while (¿Usuario cierra programa?) is (No)
+
+stop
+@enduml

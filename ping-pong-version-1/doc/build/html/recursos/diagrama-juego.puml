@@ -1,0 +1,18 @@
+@startuml img-diagrama-juego
+start
+repeat
+  if (Estado == "MENU") then (Sí)
+    :Esperar ENTER o Q;
+  else if (Estado == "SELECCION") then (Sí)
+    :Esperar selección de Arena;
+  else if (Estado == "JUGANDO") then (Sí)
+    :Mover elementos y detectar colisiones;
+    if (ESC presionado) then (Sí)
+      :Estado = "PAUSA";
+    endif
+  else if (Estado == "PAUSA") then (Sí)
+    :Mostrar opciones de reanudación;
+  endif
+repeat while (¿Ventana abierta?)
+stop
+@enduml
