@@ -1,0 +1,71 @@
+BUILD.txt
+
+CONCLUSIONES
+
+que aprendimos en el trimestre?
+
+1. Sebastian Rodriguez
+Durante este trimestre, consolidé mis conocimientos en la administración de entornos Debian 13, aprendiendo a gestionar la estructura de archivos y permisos necesaria para el simulador de mascota virtual. 
+
+2. Fabricio Castillo
+Aprendí a traducir necesidades biológicas en lógica algorítmica para el comportamiento de la mascota, logrando que interactuara de forma coherente con el usuario.
+
+3. Jose Arrieta
+Mi mayor aprendizaje fue la integración de la base de datos con la lógica del juego para garantizar la persistencia del progreso de la mascota. 
+
+4. Kleyderberg Marín
+El reto de leer y personalizar el código de otros compañeros me enseñó la importancia vital de escribir código limpio y documentado para el trabajo colaborativo. 
+
+5. Jose Medina
+Me enfoqué en la coordinación del equipo para unificar la base de datos y asegurar que el proyecto final fuera funcional para todos los integrantes. 
+
+Que debo mejorar?
+
+1. Sebastian Rodriguez
+Debo mejorar la resolución de conflictos técnicos en consola
+
+2. Fabricio Castillo
+Mi oportunidad de mejora reside en la detección temprana de errores lógicos
+
+3. Jose Arrieta
+Debo fortalecer mis habilidades en normalización de tablas
+
+4. Kleyderberg Marín
+Debo ser más paciente en la documentación de mis propios procesos
+
+5. Jose Medina
+Mi meta es mejorar la comunicación técnica de ideas complejas
+
+Del proceso educativo que debe mantener el docente?
+
+1. Sebastian Rodriguez
+Valoro que el docente mantenga el uso de herramientas reales de la industria
+
+2. Fabricio Castillo
+Agradezco que el docente permitiera libertad creativa en el diseño
+
+3. Jose Arrieta
+Destaco la metodología práctica del docente al conectar el "front" con el "back"
+
+4. Kleyderberg Marín
+Considero excelente que el docente fomente el intercambio de proyectos
+
+5. Jose Medina
+ El docente hace un gran trabajo al priorizar proyectos grupales
+
+Que se puede mejorar por parte del docente?
+
+1. Sebastian Rodriguez
+Como sugerencia, sería ideal profundizar en la optimización de sistemas para el desarrollo.
+
+2. Fabricio Castillo
+Creo que se podrían incluir más ejemplos de patrones de diseño aplicados a videojuegos.
+
+3. Jose Arrieta
+Sugiriendo únicamente más talleres de debugging específicos para bases de datos.
+
+4. Kleyderberg Marín
+Simular un entorno laboral real de forma efectiva.
+
+5. Jose Medina
+Sugiero introducir metodologías ágiles para organizar mejor las entregas.

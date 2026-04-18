@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #fdfdfd
+skinparam ActivityFontSize 12
+skinparam ArrowColor red
+
+title Proceso Clase_Perro_Hereda_Mascota
+
+start
+
+:Definir hambre, felicidad, energia Como Entero;
+:Definir opcion Como Entero;
+
+:hambre <- 50;
+:felicidad <- 50;
+:energia <- 80;
+
+repeat
+  :Limpiar Pantalla;
+  :Escribir 'Elija una accion para el Perro:';
+  :Escribir '1. Comer';
+  :Escribir '2. Jugar';
+  :Escribir '3. Dormir';
+  :Escribir '4. Salir';
+  
+  :Leer opcion;
+
+  if (opcion = 1) then (V)
+    :Escribir 'Comiendo Croquetas en el cuenco del Patio.';
+    :hambre <- hambre - 30;
+    :Escribir '¡Guau! El perro mueve la cola.';
+    :Esperar Tecla;
+  else (F)
+    if (opcion = 2) then (V)
+      :Escribir 'Corriendo tras la Pelota de tenis.';
+      :felicidad <- felicidad + 30;
+      :energia <- energia - 25;
+      :Escribir '¡Guau! El perro mueve la cola.';
+      :Esperar Tecla;
+    else (F)
+      if (opcion = 3) then (V)
+        :Escribir 'Cambiando interfaz: Mostrando Caseta de madera.';
+        :energia <- 100;
+        :Esperar Tecla;
+      else (F)
+        ' Espacio para el flujo de la opcion 4
+      endif
+    endif
+  endif
+
+repeat while (opcion = 4) is (F)
+
+:FinProceso;
+
+stop
+@enduml

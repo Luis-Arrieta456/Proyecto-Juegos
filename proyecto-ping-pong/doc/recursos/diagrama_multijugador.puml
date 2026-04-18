@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #fdfdfd
+skinparam ActivityFontSize 12
+skinparam ArrowColor red
+
+title Proceso Modo_Multijugador_Local_1vs1
+
+start
+
+:Inicializar Puntos_J1, Puntos_J2, Sets_J1, Sets_J2;
+:Sets_Ganados_Jugador <- 0;
+
+repeat
+  :Paleta_J1.mover(Teclas_W_S);
+  :Paleta_J2.mover(Teclas_Flechas);
+  
+  :Pelota.actualizar_posicion();
+
+  if (¿Pelota colisiona con Cualquier_Objeto?) then (V)
+    :Llamar Sonido.reproducir_efecto("Golpeo.wav");
+  else (F)
+  endif
+
+  if (¿Habilidad activada (Iman, Escudo, Multiplicacion)?) then (V)
+    :Llamar Sonido.reproducir_efecto("Habilidad.wav");
+    :EJECUTAR logica_habilidad();
+  else (F)
+  endif
+
+  if (¿Pelota sale de campo?) then (V)
+    :Actualizar_Puntos(Jugador_Ganador);
+    
+    if (¿puntos_jugador == 7?) then (V)
+      :Sets_Ganados_Jugador <- Sets_Ganados_Jugador + 1;
+      :Reiniciar_Puntos();
+    else (F)
+      :Reiniciar_Posicion_Pelota();
+    endif
+  else (F)
+  endif
+
+repeat while (¿Sets_Ganados_Jugador == 2?) is (F)
+
+:Escribir '¡Fin del Duelo Local!';
+:Mostrar Ganador del Match;
+
+stop
+@enduml

@@ -1,0 +1,63 @@
+@startuml
+skinparam backgroundColor #fdfdfd
+skinparam ArrowColor red
+skinparam class {
+    BackgroundColor white
+    ArrowColor red
+    BorderColor black
+    FontSize 12
+}
+
+title Diagrama de Clases - Sistema Pong
+
+class Pelota {
+    - vector_movimiento
+    - posicion_x
+    - posicion_y
+    + manejar_movimiento()
+    + calcular_rebotes()
+    + duplicar_pelota()
+}
+
+class Paleta {
+    - posicion_x
+    - posicion_y
+    - estado_escudo: boolean
+    - estado_iman: boolean
+    + mover(entrada)
+    + activar_escudo()
+    + activar_iman()
+}
+
+class Interfaz {
+    - modo_dia_noche
+    - cursor_posicion
+    + renderizar_mesa()
+    + navegar_menu()
+    + cambiar_tema()
+}
+
+class GestorDatos {
+    - db_conexion (sqlite3)
+    - ruta_json
+    + guardar_puntaje()
+    + cargar_configuracion()
+    + persistir_datos()
+}
+
+class Sonido {
+    - canales_audio
+    - volumen_maestro
+    + reproducir_loop(archivo_wav)
+    + reproducir_efecto(archivo_wav)
+    + gestionar_canales()
+}
+
+' Relaciones sugeridas para el funcionamiento
+Interfaz --> Pelota : Visualiza
+Interfaz --> Paleta : Visualiza
+Pelota ..> Sonido : Dispara efectos
+Paleta ..> Sonido : Dispara efectos
+GestorDatos ..> Interfaz : Provee datos
+
+@enduml

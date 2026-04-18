@@ -1,0 +1,72 @@
+= [blue]#🏓 PROYECTO PING PONG 🏓#
+:icons: font
+:source-highlighter: rouge
+
+image::recursos/img-banner.jpg[width=600, align="left"]
+
+== *Autores*
+* Jose Arrieta
+* Kleyderberg Marin
+* Jose Medina
+* Sebastian Rodriguez
+* Fabricio Castillo
+
+== 🛠️ Pasos para el Desarrollo del Proyecto
+Siguiendo los estándares de *Lenguajes de Programación 2*, el proyecto constó de las siguientes fases:
+
+. **ANÁLISIS DE REQUERIMIENTOS:** Planificación y definición de funciones.
+. **DISEÑO DEL SISTEMA:** Definición de arquitectura (Python) y lógica.
+. **IMPLEMENTACIÓN:** Codificación modular y desarrollo de funciones.
+. **PRUEBAS:** Verificación en entorno Linux (Debian) y corrección de errores.
+. **DESPLIEGUE:** Instalación de dependencias y ejecución final.
+. **MANTENIMIENTO:** Actualizaciones y mejoras continuas.
+
+== 🚀 Script de Automatización (Bash)
+
+Este script automatiza la creación de la jerarquía de carpetas y archivos base del proyecto.
+
+[source,bash]
+----
+#!/bin/bash
+
+# Comprobar si el usuario ingresó el nombre del proyecto
+if [ -z "$1" ]; then
+  echo "Error: Debes indicar el nombre del proyecto."
+  echo "Uso: ./setup_project.sh nombre_del_proyecto"
+  exit 1
+fi
+
+PROYECTO=$1
+
+echo "Iniciando la construcción del proyecto: $PROYECTO..."
+
+# 1. Crear estructura de directorios
+mkdir -p "$PROYECTO/app"
+mkdir -p "$PROYECTO/doc/build/html"
+mkdir -p "$PROYECTO/doc/config"
+mkdir -p "$PROYECTO/doc/recursos"
+
+# 2. Crear archivos y carpetas base
+touch "$PROYECTO/app/main.py"
+touch "$PROYECTO/app/requirements.txt" # Corregido spelling
+mkdir -p "$PROYECTO/app/venv"          # Creado como directorio
+
+# 3. Crear archivos de documentación
+touch "$PROYECTO/doc/index.adoc"
+touch "$PROYECTO/doc/build/html/test.html"
+touch "$PROYECTO/doc/config/atributos.adoc"
+touch "$PROYECTO/doc/recursos/diagrama-flujo.puml"
+touch "$PROYECTO/build.txt"            # Requerido según la consigna
+
+# 4. Crear el archivo readme.adoc en la raíz
+touch "$PROYECTO/readme.adoc"
+
+# 5. Agregar contenido mínimo básico
+echo "print('Aplicación iniciada')" > "$PROYECTO/app/main.py"
+echo "= Documentación de $PROYECTO" > "$PROYECTO/doc/index.adoc"
+echo "= README: $PROYECTO" > "$PROYECTO/readme.adoc"
+echo "Build generado el $(date)" > "$PROYECTO/build.txt"
+
+echo "------------------------------------------"
+echo "¡Listo! Estructura de '$PROYECTO' generada."
+----

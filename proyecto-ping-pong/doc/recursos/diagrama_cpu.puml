@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #fdfdfd
+skinparam ActivityFontSize 12
+skinparam ArrowColor red
+
+title Proceso Modo_CPU_Con_Efectos_Y_Habilidades
+
+start
+
+:Inicializar Puntos, Sets_Ganados, Sonidos;
+:Sets_Ganados <- 0;
+
+repeat
+  if (¿Musica_Fondo.reproduciendo?) then (F)
+    :Llamar Sonido.reproducir_loop("Fondo.wav");
+  else (V)
+  endif
+
+  :Paleta_J1.mover(Teclas_W_S);
+  :Paleta_CPU.ejecutar_IA_con_Random(Pelota);
+
+  if (¿Pelota colisiona con Paleta o Borde?) then (V)
+    :Llamar Sonido.reproducir_efecto("Golpeo.wav");
+    :Aumentar Pelota.velocidad (x 1.1);
+  else (F)
+  endif
+
+  if (¿random < 0.005?) then (V)
+    :Llamar Habilidad.generar();
+    :Llamar Sonido.reproducir_efecto("Habilidad.wav");
+  else (F)
+  endif
+
+  if (¿Pelota sale de campo?) then (V)
+    :Actualizar_Puntos();
+    if (¿puntos == 7?) then (V)
+      :Sets_Ganados <- Sets_Ganados + 1;
+      :Reiniciar_Puntos();
+    else (F)
+      :Reiniciar_Posicion_Pelota();
+    endif
+  else (F)
+  endif
+
+repeat while (¿Sets_Ganados == 2?) is (F)
+
+:Detener Música;
+:Escribir 'Partida Finalizada';
+
+stop
+@enduml

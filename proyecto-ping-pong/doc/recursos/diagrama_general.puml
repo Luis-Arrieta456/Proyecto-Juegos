@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #fdfdfd
+skinparam ActivityFontSize 12
+skinparam ArrowColor red
+
+title Proceso Proyecto_Ping_Pong_Estructurado
+
+start
+
+:Llamar Entorno.activar_venv();
+:Cargar datos desde JSON (Récord y Fondo);
+:Llamar Interfaz.inicializar_GUI();
+:estado_juego <- "MENU";
+
+repeat
+    if (estado_juego == "MENU") then (V)
+        :MOSTRAR Menú_Principal;
+        :ELEGIR modo_juego (CPU, Multijugador, Ilimitado);
+        :ELEGIR fondo (Diurno o Nocturno);
+        if (confirmar_seleccion) then (V)
+            :estado_juego <- "JUGANDO";
+        else (F)
+        endif
+    endif
+
+    if (estado_juego == "JUGANDO") then (V)
+        :Activar Música de fondo;
+        if (tecla_pausa presionada) then (V)
+            :MOSTRAR Menú_Pausa (Continuar, Reiniciar, Salir);
+        else (F)
+        endif
+        
+        :EJECUTAR modo_juego_seleccionado (Lógica específica);
+        
+        :MOSTRAR fondo_seleccionado;
+        :MOSTRAR Paletas y Pelota;
+        :MOSTRAR Marcador y/o Vidas;
+        
+        if (Pelota.colisiona) then (V)
+            :Llamar Sonido.reproducir("Golpeo");
+        else (F)
+        endif
+        
+        if (Habilidad.activa) then (V)
+            :Llamar Sonido.reproducir("Habilidad");
+        else (F)
+        endif
+    endif
+
+    if (estado_juego == "FINALIZADO") then (V)
+        :Llamar GestorPersistencia.guardar_cambios();
+        :estado_juego <- "MENU";
+    else (F)
+    endif
+
+repeat while (usuario elija "Salir"?) is (F)
+
+:FinProceso;
+
+stop
+@enduml

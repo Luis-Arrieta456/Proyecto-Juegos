@@ -1,0 +1,47 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+abstract class Mascota {
+    - nombre: String
+    - hambre: int
+    - felicidad: int
+    - energia: int
+    - experiencia: int
+    + comer()
+    + jugar()
+    + dormir()
+    + aplicar_disciplina()
+    + generar_necesidad()
+}
+
+class Perro {
+    + ladrar()
+    + comer() // Patio: Croquetas
+    + jugar() // Pelota tenis
+    + dormir() // Caseta madera
+}
+
+class Gato {
+    + maullar()
+    + comer() // Sala: Atun
+    + jugar() // Puntero Laser
+    + dormir() // Caja carton
+}
+
+class Loro {
+    + hablar()
+    + comer() // Balcon: Semillas
+    + jugar() // Campanilla
+    + dormir() // Percha manta
+}
+
+class GestorPersistencia {
+    + cargar_datos(json)
+    + guardar_datos(json)
+}
+
+Mascota <|-- Perro
+Mascota <|-- Gato
+Mascota <|-- Loro
+GestorPersistencia ..> Mascota : maneja
+@enduml

@@ -1,0 +1,17 @@
+PSEUDOCÓDIGO – Modo Puntuación Ilimitada
+
+REPETIR
+    Paleta_J1.mover(Mouse_o_Teclado)
+    Pelota.actualizar_posicion()
+    
+    # Dificultad Progresiva
+    Pelota.velocidad = velocidad_base + (Puntos_Actuales * factor_aceleracion)
+    
+    SI Pelota.sale_de_campo ENTONCES
+        vidas -= 1
+        SI vidas == 0 ENTONCES
+            Llamar GestorPersistencia.actualizar_record(Puntos_Actuales)
+            fin_partida = VERDADERO
+        SINO
+            Reiniciar_Pelota_Posicion()
+HASTA QUE fin_partida

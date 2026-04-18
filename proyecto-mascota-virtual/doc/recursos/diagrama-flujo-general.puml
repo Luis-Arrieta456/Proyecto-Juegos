@@ -1,0 +1,114 @@
+@startuml
+skinparam backgroundColor #fdfdfd
+skinparam ActivityFontSize 12
+skinparam ArrowColor red
+
+title Proceso Proyecto_Mascota_Virtual
+
+start
+
+:Definir mascota_tipo, nombre_usuario Como Cadena;
+:Definir hambre, felicidad, energia, experiencia Como Entero;
+:Definir continuar, mascota_creada Como Logico;
+:Definir opcion_menu, azar_valor Como Real;
+
+:Escribir 'Cargando datos desde Gestor...';
+:mascota_creada <- Falso;
+:continuar <- Verdadero;
+
+if (NO mascota_creada) then (V)
+    :Escribir 'No existe mascota. Seleccione una: 1.Perro, 2.Gato, 3.Loro';
+    :Leer opcion_menu;
+    
+    if (opcion_menu=1) then (V)
+        :mascota_tipo <- 'Perro';
+    else (F)
+        if (opcion_menu=2) then (V)
+            :mascota_tipo <- 'Gato';
+        else (F)
+            if (opcion_menu=3) then (V)
+                :mascota_tipo <- 'Loro';
+            endif
+        endif
+    endif
+    
+    :Escribir 'Ingrese su nombre de usuario:';
+    :Leer nombre_usuario;
+    :hambre <- 50;
+    :felicidad <- 50;
+    :energia <- 100;
+    :experiencia <- 0;
+    :mascota_creada <- Verdadero;
+else (F)
+endif
+
+repeat
+    :Limpiar Pantalla;
+    :Escribir '--- MASCOTA VIRTUAL: ', mascota_tipo, ' ---';
+    :Escribir 'Usuario: ', nombre_usuario;
+    
+    if (mascota_tipo='Perro') then (V)
+        :Escribir 'Ambiente: Patio';
+    else (F)
+        if (mascota_tipo='Gato') then (V)
+            :Escribir 'Ambiente: Sala';
+        else (F)
+            if (mascota_tipo='Loro') then (V)
+                :Escribir 'Ambiente: Balcon';
+            endif
+        endif
+    endif
+    
+    :Escribir 'NIVELES -> Hambre: ', hambre, ' Felicidad: ', felicidad, ' Energia: ', energia;
+    :Escribir '------------------------------------------';
+    
+    :azar_valor <- Azar(10)/10;
+    
+    if (azar_valor > 0.7) then (V)
+        :Escribir 'AVISO: Tu mascota tiene una necesidad urgente!';
+        :hambre <- hambre + 10;
+    else (F)
+    endif
+    
+    :Escribir '1.Alimentar, 2.Jugar, 3.Dormir, 4.Disciplinar, 5.Salir';
+    :Leer opcion_menu;
+    
+    if (opcion_menu=1) then (V)
+        :Escribir 'Comiendo...';
+        :hambre <- hambre - 20;
+        :Esperar Tecla;
+    else (F)
+        if (opcion_menu=2) then (V)
+            if (energia > 20) then (V)
+                :Escribir 'Jugando...';
+                :felicidad <- felicidad + 30;
+                :energia <- energia - 25;
+            else (F)
+                :Escribir 'La mascota esta muy cansada.';
+            endif
+            :Esperar Tecla;
+        else (F)
+            if (opcion_menu=3) then (V)
+                :Escribir 'Durmiendo...';
+                :energia <- 100;
+                :Esperar Tecla;
+            else (F)
+                if (opcion_menu=4) then (V)
+                    :Escribir 'Disciplinando...';
+                    :experiencia <- experiencia + 10;
+                    :Esperar Tecla;
+                else (F)
+                    if (opcion_menu=5) then (V)
+                        :continuar <- Falso;
+                    endif
+                endif
+            endif
+        endif
+    endif
+
+repeat while (continuar = Verdadero) is (V)
+
+:FinProceso;
+
+stop
+@enduml

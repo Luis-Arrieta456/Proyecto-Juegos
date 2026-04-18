@@ -1,0 +1,7 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+# Ignorar archivos de construcción de HTML si no los quieres en el repo
+**/doc/build/html/
